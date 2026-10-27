@@ -12,14 +12,14 @@ if %ERRORLEVEL% NEQ 0 (
 )
 
 echo Compilando testes.exe...
-cl /nologo /W3 /utf-8 /D_CRT_SECURE_NO_WARNINGS /Fe:testes.exe testes.c agente.c leitura.c
+cl /nologo /W3 /utf-8 /D_CRT_SECURE_NO_WARNINGS /Fe:testes.exe testes.c
 if %ERRORLEVEL% NEQ 0 (
     echo [ERRO] Falha ao compilar testes.exe
     exit /b 1
 )
 
 echo Compilando pim2.exe...
-cl /nologo /W3 /utf-8 /D_CRT_SECURE_NO_WARNINGS /Fe:pim2.exe main.c menu.c agente.c leitura.c
+cl /nologo /W3 /utf-8 /D_CRT_SECURE_NO_WARNINGS /Fe:pim2.exe main.c
 if %ERRORLEVEL% NEQ 0 (
     echo [ERRO] Falha ao compilar pim2.exe
     exit /b 1

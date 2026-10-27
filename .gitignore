@@ -1,0 +1,46 @@
+# Compilação e Binários C (MSVC / GCC / Clang)
+*.exe
+*.obj
+*.o
+*.lib
+*.a
+*.dll
+*.so
+*.dylib
+
+# Depuração e Linker MSVC
+*.pdb
+*.ilk
+*.idb
+*.exp
+vc*.pdb
+
+# Arquivos de compilação e temporários
+*.tmp
+*.log
+*.bak
+build/
+bin/
+obj/
+
+# Dados locais de execução do programa
+agentes.txt
+
+# IDEs e Editores
+.vs/
+*.user
+*.suo
+.idea/
+.vscode/
+!.vscode/tasks.json
+!.vscode/launch.json
+
+# Sistema Operacional
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+.DS_Store
+
+# Pastas
+Arquivos Gerados pela equipe/

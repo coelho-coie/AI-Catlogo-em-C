@@ -1,23 +1,17 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include "agente.h"
-#include "menu.h"
+#include "agente.c"
+#include "leitura.c"
+#include "persistencia.c"
+#include "menu.c"
 
-#if defined(_WIN32) || defined(_WIN64)
-#include <windows.h>
-#endif
-
+// Autor: Vitor Hugo
 int main(void) {
-#if defined(_WIN32) || defined(_WIN64)
-    /* Configura o console do Windows para codificacao UTF-8 */
-    SetConsoleOutputCP(CP_UTF8);
-    SetConsoleCP(CP_UTF8);
-#endif
-
     Catalogo catalogo;
-    inicializar_catalogo(&catalogo);
 
-    executar_menu_principal(&catalogo);
+    catalogo.total = 0;
+    carregar_dados(&catalogo, ARQUIVO);
+    printf("%d agente(s) carregado(s).\n", catalogo.total);
 
+    executar_menu(&catalogo);
     return 0;
 }

@@ -1,132 +1,251 @@
-#include "menu.h"
-#include "leitura.h"
 #include <stdio.h>
+#include <string.h>
+#include <ctype.h>
 
-void exibir_layout_menu(const Catalogo *cat) {
-    int ativos = cat ? cat->total_ativos : 0;
-    int vagas = cat ? obter_vagas_disponiveis(cat) : 0;
-
-    printf("============================================================\n");
-    printf("         CATALOGO DE AGENTES DE INTELIGENCIA ARTIFICIAL     \n");
-    printf("============================================================\n");
-    printf(" Status: [%d/%d] Agentes Ativos  |  Vagas Disponiveis: %d\n", ativos, MAX_AGENTES, vagas);
-    printf("------------------------------------------------------------\n");
-    printf("  [1] Cadastrar Novo Agente de IA       (RF-02)\n");
-    printf("  [2] Listar Agentes Cadastrados        (RF-03)\n");
-    printf("  [3] Buscar Agente por ID              (RF-04)\n");
-    printf("  [4] Buscar Agente por Nome            (RF-05)\n");
-    printf("  [5] Salvar Catalogo em Arquivo        (RF-08)\n");
-    printf("  [6] Carregar Catalogo de Arquivo      (RF-09)\n");
-    printf("  [0] Encerrar o Sistema\n");
-    printf("============================================================\n");
+// Autor: Vitor Hugo (menu principal)
+void mostrar_menu(Catalogo *cat) {
+    printf("\n=== CATALOGO DE AGENTES DE IA ===\n");
+    printf("Agentes: %d/%d\n", cat->total, MAX_AGENTES);
+    printf("1 - Cadastrar agente\n");
+    printf("2 - Listar agentes\n");
+    printf("3 - Buscar por ID\n");
+    printf("4 - Buscar por nome\n");
+    printf("5 - Ranking por nota\n");
+    printf("0 - Sair\n");
 }
 
-static void handler_cadastrar_agente(Catalogo *cat) {
-    limpar_tela();
-    printf("============================================================\n");
-    printf("            CADASTRO DE NOVO AGENTE DE IA (RF-02)           \n");
-    printf("============================================================\n");
-    if (obter_vagas_disponiveis(cat) == 0) {
-        printf("Aviso: O catalogo atingiu o limite maximo de %d agentes.\n", MAX_AGENTES);
-        printf("Nao ha vagas disponiveis no momento.\n");
-    } else {
-        printf("Modulo pronto para cadastro de novo agente.\n");
-        printf("Capacidade restante: %d vagas.\n", obter_vagas_disponiveis(cat));
+// Autor: Mateus
+void mostrar_ficha(Catalogo *cat, int pos) {
+    printf("\nID: %d\n", cat->ids[pos]);
+    printf("Nome: %s\n", cat->nomes[pos]);
+    printf("Nota: %.2f\n", cat->notas[pos]);
+    printf("Instrucoes: %s\n", cat->scripts[pos]);
+}
+
+// Autor: Mateus
+// Edicao: ENTER mantem o valor atual. O ID nao muda.
+void editar(Catalogo *cat, int pos) {
+    char buffer[TAM_SCRIPT];
+    int i;
+    float nota;
+
+    printf("Novo nome (ENTER mantem): ");
+    ler_linha(buffer, TAM_NOME);
+    if (strlen(buffer) > 0) {
+        if (nome_valido(buffer)) strcpy(cat->nomes[pos], buffer);
+        else printf("Nome invalido. Mantido o atual.\n");
     }
-    pausar_tela();
-}
 
-static void handler_listar_agentes(const Catalogo *cat) {
-    limpar_tela();
-    printf("============================================================\n");
-    printf("           LISTAGEM DE AGENTES CADASTRADOS (RF-03)          \n");
-    printf("============================================================\n");
-    if (cat->total_ativos == 0) {
-        printf("Nenhum agente cadastrado no momento.\n");
-    } else {
-        printf("Total de agentes ativos no catalogo: %d\n", cat->total_ativos);
+    printf("Nova instrucao (ENTER mantem): ");
+    ler_linha(buffer, TAM_SCRIPT);
+    if (strlen(buffer) > 0) strcpy(cat->scripts[pos], buffer);
+
+    printf("Nova nota de 0 a 5 (ENTER mantem): ");
+    ler_linha(buffer, 64);
+    if (strlen(buffer) > 0) {
+        for (i = 0; buffer[i] != '\0'; i++) {
+            if (buffer[i] == ',') buffer[i] = '.';
+        }
+        if (sscanf(buffer, "%f", &nota) == 1 && nota >= 0.0f && nota <= 5.0f) {
+            cat->notas[pos] = nota;
+        } else {
+            printf("Nota invalida. Mantida a atual.\n");
+        }
     }
-    pausar_tela();
 }
 
-static void handler_buscar_id(const Catalogo *cat) {
-    limpar_tela();
-    printf("============================================================\n");
-    printf("               BUSCA DE AGENTE POR ID (RF-04)               \n");
-    printf("============================================================\n");
-    printf("Modulo de busca por ID e submenu de acoes (Editar / Excluir).\n");
-    (void)cat;
-    pausar_tela();
+// Autor: Mateus
+// Retorna 1 se excluiu.
+int excluir(Catalogo *cat, int pos) {
+    char resposta[8];
+
+    printf("Confirma a exclusao de %s? (S/N): ", cat->nomes[pos]);
+    ler_linha(resposta, sizeof(resposta));
+    if (resposta[0] == 'S' || resposta[0] == 's') {
+        excluir_posicao(cat, pos);
+        printf("Agente excluido.\n");
+        return 1;
+    }
+    printf("Exclusao cancelada.\n");
+    return 0;
 }
 
-static void handler_buscar_nome(const Catalogo *cat) {
-    limpar_tela();
-    printf("============================================================\n");
-    printf("              BUSCA DE AGENTE POR NOME (RF-05)              \n");
-    printf("============================================================\n");
-    printf("Modulo de busca por nome (parcial ou completo).\n");
-    (void)cat;
-    pausar_tela();
+// Autor: Matheus
+void submenu(Catalogo *cat, int pos) {
+    int opcao;
+
+    while (1) {
+        mostrar_ficha(cat, pos);
+        printf("1 - Editar   2 - Excluir   0 - Voltar\n");
+        opcao = ler_inteiro("Opcao: ");
+
+        if (opcao == 1) {
+            editar(cat, pos);
+            salvar_dados(cat, ARQUIVO);
+        } else if (opcao == 2) {
+            if (excluir(cat, pos)) {
+                salvar_dados(cat, ARQUIVO);
+                return;
+            }
+        } else if (opcao == 0) {
+            return;
+        } else {
+            printf("Opcao invalida.\n");
+        }
+    }
 }
 
-static void handler_salvar_arquivo(const Catalogo *cat) {
-    limpar_tela();
-    printf("============================================================\n");
-    printf("           SALVAMENTO DO CATALOGO EM ARQUIVO (RF-08)        \n");
-    printf("============================================================\n");
-    printf("Modulo de persistencia em disco local.\n");
-    printf("Total de registros para gravacao: %d agentes ativos.\n", cat->total_ativos);
-    pausar_tela();
+// Autor: Erick
+// Busca sem diferenciar maiusculas de minusculas.
+int contem(char *texto, char *termo) {
+    int i;
+    int j;
+    int k;
+
+    for (i = 0; texto[i] != '\0'; i++) {
+        j = 0;
+        k = i;
+        while (termo[j] != '\0' && texto[k] != '\0' &&
+               tolower((unsigned char)texto[k]) == tolower((unsigned char)termo[j])) {
+            j++;
+            k++;
+        }
+        if (termo[j] == '\0') return 1;
+    }
+    return 0;
 }
 
-static void handler_carregar_arquivo(Catalogo *cat) {
-    limpar_tela();
-    printf("============================================================\n");
-    printf("          CARREGAMENTO DO CATALOGO DE ARQUIVO (RF-09)       \n");
-    printf("============================================================\n");
-    printf("Modulo de restauracao de dados salvos em disco.\n");
-    (void)cat;
-    pausar_tela();
+// Autor: Erick
+void buscar_id(Catalogo *cat) {
+    int id;
+    int pos;
+
+    id = ler_inteiro("ID procurado: ");
+    pos = buscar_posicao(cat, id);
+    if (pos < 0) {
+        printf("Nenhum agente com o ID %d.\n", id);
+        return;
+    }
+    submenu(cat, pos);
 }
 
-void executar_menu_principal(Catalogo *cat) {
+// Autor: Erick
+void buscar_nome(Catalogo *cat) {
+    char termo[TAM_NOME];
+    int i;
+    int qtd = 0;
+    int id;
+    int pos;
+
+    printf("Nome ou parte dele: ");
+    ler_linha(termo, sizeof(termo));
+
+    for (i = 0; i < cat->total; i++) {
+        if (contem(cat->nomes[i], termo)) {
+            printf("ID %d - %s\n", cat->ids[i], cat->nomes[i]);
+            qtd++;
+        }
+    }
+    if (qtd == 0) {
+        printf("Nenhum agente encontrado.\n");
+        return;
+    }
+
+    id = ler_inteiro("Digite o ID para abrir (0 para voltar): ");
+    pos = buscar_posicao(cat, id);
+    if (pos >= 0) submenu(cat, pos);
+}
+
+// Autor: Erick
+void cadastrar(Catalogo *cat) {
+    char nome[TAM_NOME];
+    char script[TAM_SCRIPT];
+    float nota;
+    int id;
+
+    if (cat->total >= MAX_AGENTES) {
+        printf("Catalogo cheio (%d agentes).\n", MAX_AGENTES);
+        return;
+    }
+
+    printf("Nome (sem numeros): ");
+    ler_linha(nome, TAM_NOME);
+    while (!nome_valido(nome)) {
+        printf("Nome invalido. Use letras e espacos: ");
+        ler_linha(nome, TAM_NOME);
+    }
+
+    nota = ler_nota("Nota (0 a 5): ");
+
+    printf("Instrucoes: ");
+    ler_linha(script, TAM_SCRIPT);
+
+    id = cadastrar_agente(cat, nome, script, nota);
+    if (id == 0) {
+        printf("Nao foi possivel cadastrar.\n");
+        return;
+    }
+    printf("Agente cadastrado com o ID %d.\n", id);
+    salvar_dados(cat, ARQUIVO);
+}
+
+// Autor: Mateus
+void listar(Catalogo *cat) {
+    int i;
+
+    if (cat->total == 0) {
+        printf("Nenhum agente cadastrado.\n");
+        return;
+    }
+    printf("\nID    NOME                     NOTA  INSTRUCOES\n");
+    for (i = 0; i < cat->total; i++) {
+        printf("%-5d %-24.24s %-5.2f %.30s\n", cat->ids[i], cat->nomes[i],
+               cat->notas[i], cat->scripts[i]);
+    }
+}
+
+// Diferencial: ranking da maior nota para a menor (selecao)
+void ranking(Catalogo *cat) {
+    int ordem[MAX_AGENTES];
+    int i;
+    int j;
+    int tmp;
+
+    if (cat->total == 0) {
+        printf("Nenhum agente cadastrado.\n");
+        return;
+    }
+    for (i = 0; i < cat->total; i++) ordem[i] = i;
+    for (i = 0; i < cat->total - 1; i++) {
+        for (j = i + 1; j < cat->total; j++) {
+            if (cat->notas[ordem[j]] > cat->notas[ordem[i]]) {
+                tmp = ordem[i];
+                ordem[i] = ordem[j];
+                ordem[j] = tmp;
+            }
+        }
+    }
+
+    printf("\nPOS  ID    NOTA   NOME\n");
+    for (i = 0; i < cat->total; i++) {
+        printf("%-4d %-5d %-6.2f %s\n", i + 1, cat->ids[ordem[i]],
+               cat->notas[ordem[i]], cat->nomes[ordem[i]]);
+    }
+}
+
+// Autor: Vitor Hugo (menu principal)
+void executar_menu(Catalogo *cat) {
     int opcao = -1;
 
     while (opcao != 0) {
-        limpar_tela();
-        exibir_layout_menu(cat);
-
-        if (!ler_inteiro_faixa("\nDigite a opcao desejada (0-6): ", 0, 6, &opcao)) {
-            continue;
-        }
-
-        switch (opcao) {
-            case 1:
-                handler_cadastrar_agente(cat);
-                break;
-            case 2:
-                handler_listar_agentes(cat);
-                break;
-            case 3:
-                handler_buscar_id(cat);
-                break;
-            case 4:
-                handler_buscar_nome(cat);
-                break;
-            case 5:
-                handler_salvar_arquivo(cat);
-                break;
-            case 6:
-                handler_carregar_arquivo(cat);
-                break;
-            case 0:
-                limpar_tela();
-                printf("============================================================\n");
-                printf(" Sistema encerrado com sucesso. Ate logo!\n");
-                printf("============================================================\n\n");
-                break;
-            default:
-                break;
-        }
+        mostrar_menu(cat);
+        opcao = ler_inteiro("Opcao: ");
+        if (opcao == 1) cadastrar(cat);
+        else if (opcao == 2) listar(cat);
+        else if (opcao == 3) buscar_id(cat);
+        else if (opcao == 4) buscar_nome(cat);
+        else if (opcao == 5) ranking(cat);
+        else if (opcao != 0) printf("Opcao invalida.\n");
     }
+    printf("Ate logo!\n");
 }

@@ -1,0 +1,25 @@
+ID,Requisito,Atividade,Responsável,Início,Fim,Critério de Aceite,Status,Atraso
+1.,"RNF-01, RNF-04, RF-01",Fundação do Sistema e Menu Principal,Todos,10/10/2026,14/10/2026,Estrutura do agente definida em struct e menu principal operacional em console.,Concluído,No prazo
+1.1,RNF-04,Definir a struct do Agente e inicializar o catálogo em memória,Vitor,10/10/2026,14/10/2026,Estrutura com todos os campos criada e catálogo dimensionado para até 50 agentes.,Concluído,No prazo
+1.2,RNF-01,Implementar rotinas de leitura segura e validação de entradas,Vitor,10/10/2026,14/10/2026,Entradas numéricas e textuais lidas com segurança sem travamentos ou pulos de campo.,Concluído,No prazo
+1.3,RF-01,Implementar a interface do Menu Principal e fluxo de navegação,Vitor,10/10/2026,14/10/2026,Menu interativo com todas as opções exigidas no edital funcionando perfeitamente.,Concluído,No prazo
+2.,"RF-02 a RF-07, RNF-05",Operações de Cadastro e Consulta do Catálogo,Todos,14/10/2026,18/10/2026,Cadastro de agentes e mecanismos de consulta por ID e nome plenamente funcionais.,Em Andamento,7 dia(s)
+2.1,RNF-05,Estruturar o código em funções modulares e organizar o fluxo principal,Vitor,14/10/2026,18/10/2026,Funções bem definidas para cada tarefa mantendo o fluxo principal simples e limpo.,Concluído,No prazo
+2.2,RF-02,Implementar o cadastro de novo agente com validação de dados,Erick,14/10/2026,18/10/2026,Novo agente registrado com ID único e nota validada na faixa de 0 a 5.,Concluído,No prazo
+2.3,RF-03,Implementar a listagem de todos os agentes cadastrados,Mateus,14/10/2026,18/10/2026,Lista clara e organizada exibindo ID Nome Nota e resumo do Script dos agentes ativos.,Concluído,No prazo
+2.4,RF-04,Implementar a busca de agente por identificador (ID),Erick,14/10/2026,18/10/2026,Agente localizado rapidamente pelo número de ID exibindo sua ficha de detalhes.,Concluído,No prazo
+2.5,RF-05,Implementar a busca de agente por nome ou parte do nome,Erick,14/10/2026,18/10/2026,Busca flexível que encontra agentes por qualquer termo presente no nome.,Concluído,No prazo
+2.6,RF-06,Gerenciamento Avançado e Persistência de Dados,Mateus,14/10/2026,18/10/2026,Edição exclusão e persistência completa em arquivo local em pleno funcionamento.,Concluído,No prazo
+2.7,RF-07,Implementar o submenu de ações no agente localizado,Matheus ,14/10/2026,18/10/2026,Tela de detalhes com opções diretas para editar excluir ou voltar ao menu.,Concluído,No prazo
+3.,"RF-08, RF-09, RNF-02, RNF-03, RNF-06",Implementar a edição dos dados do agente selecionado,Todos,18/10/2026,22/10/2026,Permite alterar nome script ou nota mantendo os valores originais se desejado.,Em Andamento,3 dia(s)
+3.1,"RF-08, RNF-06",Implementar a exclusão de agente com confirmação do usuário,Mateus,18/10/2026,22/10/2026,Agente desativado somente após confirmação expressa liberando a vaga no catálogo.,Concluído,No prazo
+3.2,"RF-09, RNF-06",Implementar o salvamento dos dados do catálogo em arquivo local,Arthur ,18/10/2026,22/10/2026,Todos os agentes cadastrados são gravados com integridade no disco ao encerrar.,Atrasado,3 dia(s)
+3.3,RNF-02,Implementar o carregamento automático dos dados ao iniciar o programa,Arthur ,18/10/2026,22/10/2026,Dados previamente salvos são restaurados na memória sem necessidade de ação do usuário.,Atrasado,3 dia(s)
+3.4,RNF-03,Garantir funcionamento local autônomo e tolerância a falhas de arquivo,Matheus,18/10/2026,22/10/2026,Sistema opera sem dependências externas e inicia normalmente mesmo sem arquivo prévio.,Concluído,No prazo
+4.,"RF-01 a RF-09, RNF-01 a RNF-06",Testes Integrados e Finalização da Entrega,Todos,22/10/2026,26/10/2026,Sistema homologado de ponta a ponta sem falhas pronto para apresentação do PIM II.,Em Andamento,No prazo
+4.1,RF-01 a RF-09,Realizar testes de validação com todos os cenários de uso,Todos,22/10/2026,26/10/2026,Todas as funcionalidades testadas e aprovadas com catálogo vazio parcial e cheio.,Em Andamento,No prazo
+4.2,RNF-01 a RNF-06,Verificar compilação e empacotamento do executável final,Todos,22/10/2026,26/10/2026,Programa compila sem erros e executa perfeitamente conforme as diretrizes da UNIP.,Em Andamento,No prazo
+,,,,,,,,
+,,,,,,,,
+,,Para acessar deve enviar o username do github para o vitor,,,,,,
+,,https://github.com/coelho-coie/AI-Cat-logo-em-C.git,,,,,,

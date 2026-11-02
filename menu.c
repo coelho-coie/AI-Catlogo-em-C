@@ -26,7 +26,6 @@ void mostrar_ficha(Catalogo *cat, int pos) {
 // Edicao: ENTER mantem o valor atual. O ID nao muda.
 void editar(Catalogo *cat, int pos) {
     char buffer[TAM_SCRIPT];
-    int i;
     float nota;
 
     printf("Novo nome (ENTER mantem): ");
@@ -43,10 +42,7 @@ void editar(Catalogo *cat, int pos) {
     printf("Nova nota de 0 a 5 (ENTER mantem): ");
     ler_linha(buffer, 64);
     if (strlen(buffer) > 0) {
-        for (i = 0; buffer[i] != '\0'; i++) {
-            if (buffer[i] == ',') buffer[i] = '.';
-        }
-        if (sscanf(buffer, "%f", &nota) == 1 && nota >= 0.0f && nota <= 5.0f) {
+        if (converter_nota(buffer, &nota)) {
             cat->notas[pos] = nota;
         } else {
             printf("Nota invalida. Mantida a atual.\n");

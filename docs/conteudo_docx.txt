@@ -1,0 +1,287 @@
+ORIENTAÇÕES DO PIM II — PROJETO INTEGRADO MULTIDISCIPLINAR
+Análise e Desenvolvimento de Sistemas — 1º e 2º períodos — 2026/2
+Prezados alunos,
+Estas orientações complementam o manual do PIM II e apresentam a estrutura do trabalho, os requisitos do sistema e o cronograma de desenvolvimento.
+1. Tema e proposta do projeto
+Tema: Desenvolvimento de um Sistema de Catálogo e Gerenciador de Configurações de Agentes de IA — AI Agent Registry.
+O grupo deverá projetar e implementar um programa em linguagem C para cadastrar, consultar, editar e excluir configurações de agentes de Inteligência Artificial.
+Um agente poderá ter uma finalidade específica, como atendimento ao cliente, apoio financeiro ou revisão de código. O catálogo armazenará seu nome, suas instruções e sua nota.
+O produto mínimo exigido é o gerenciamento dessas informações. A execução dos agentes por integração com uma plataforma de IA não faz parte dos requisitos mínimos.
+O projeto deverá integrar o software, a documentação acadêmica, a modelagem do banco de dados, o planejamento da rede, os testes e a análise de sustentabilidade.
+2. Grupo e cadastro obrigatório
+O trabalho deverá ser desenvolvido em grupo de até seis alunos.
+Antes da postagem, o líder deverá acessar Trabalhos Acadêmicos e cadastrar:
+Nome completo de todos os integrantes.
+RA de todos os integrantes, inclusive o próprio.
+O grupo deverá dividir as responsabilidades e registrar a participação de cada integrante. Cada aluno poderá assumir uma área principal, mas todos deverão conhecer o funcionamento e a proposta do sistema.
+Os integrantes deverão participar dos encontros definidos pelo professor orientador. A nota poderá ser diferente para cada aluno, conforme sua participação.
+3. Prazo de entrega
+A parte escrita deverá ser postada em Trabalhos Acadêmicos até 12 de novembro de 2026, às 23h.
+Após esse horário, o sistema será fechado e não será possível realizar a postagem.
+O prazo interno para concluir o trabalho, revisar os arquivos e verificar os links será 11 de novembro de 2026. Recomenda-se antecipar a postagem para evitar problemas de acesso ou envio.
+Não é necessário entregar o trabalho impresso. O código-fonte comentado deverá ser disponibilizado pelos alunos em uma pasta ou repositório acessível ao professor, utilizando Google Drive, OneDrive ou GitHub, conforme as orientações do item 9.
+4. Estrutura do trabalho escrito
+O trabalho deverá seguir o modelo de capa fornecido e o guia de normalização da Biblioteca da Universidade Paulista.
+Organizar o documento nesta sequência:
+1. Capa.
+2. Demais elementos pré-textuais exigidos pelo modelo institucional.
+3. Lista de figuras, quando houver.
+4. Lista de tabelas, quando houver.
+5. Sumário.
+6. Capítulo 1 — Introdução.
+7. Capítulo 2 — Desenvolvimento.
+8. Capítulo 3 — Conclusão.
+9. Referências.
+10. Apêndice com o link do código-fonte e materiais complementares.
+Utilizar sumário para apresentar os capítulos, as subseções e as respectivas páginas.
+5. Capítulo 1 — Introdução
+A introdução deverá ter aproximadamente duas páginas A4, conforme a formatação institucional.
+O texto deverá apresentar o tema de forma contínua, com citações das fontes utilizadas, contemplando:
+Contextualização da Inteligência Artificial e dos agentes de IA.
+Definição, características e funcionalidades dos agentes.
+Origem e evolução do tema, com base em fontes bibliográficas.
+Necessidade de organizar e padronizar configurações de agentes.
+Cenário escolhido pelo grupo: empresa, setor ou situação simulada.
+Motivação para desenvolver o catálogo.
+Penúltimo parágrafo: problema
+Apresentar claramente a dificuldade que o sistema pretende resolver. Por exemplo: configurações dispersas, dificuldade de localizar instruções, duplicidade de cadastros ou ausência de padronização.
+O problema deve corresponder ao cenário definido pelo grupo.
+Último parágrafo: objetivos
+Apresentar o objetivo geral e os objetivos específicos, explicando a solução proposta.
+O objetivo geral deverá expressar o desenvolvimento do catálogo em C. Os específicos deverão contemplar, entre outros:
+Implementar cadastro, consulta, edição e exclusão.
+Salvar e recuperar os registros em arquivos.
+Aplicar práticas de Engenharia de Software Ágil.
+Produzir a modelagem do banco de dados.
+Planejar um possível funcionamento em rede local.
+Testar o sistema e elaborar seu manual.
+Documentar o uso de IA no desenvolvimento.
+Os objetivos devem ser compatíveis com o que será efetivamente desenvolvido e demonstrado.
+6. Capítulo 2 — Desenvolvimento
+Este capítulo deverá ter de 20 a 30 páginas, incluindo os textos, tabelas e capturas de tela que o compõem.
+Iniciar com uma breve apresentação do capítulo, retomando o tema do PIM II e explicando como as disciplinas contribuíram para a solução.
+O desenvolvimento deverá mostrar como os conhecimentos foram aplicados ao projeto. Evitar transformar as subseções em resumos genéricos das disciplinas.
+A estrutura abaixo inclui Direitos Humanos, conforme a orientação da turma, e preserva os conteúdos de IA, Pesquisa Tecnológica e Inovação previstos no manual.
+2.1. Engenharia de Software Ágil
+Apresentar como o grupo organizou e acompanhou o projeto.
+Incluir:
+Responsabilidades dos integrantes.
+Backlog com funcionalidades e atividades.
+Priorização das entregas.
+Planejamento das sprints.
+Quadro de acompanhamento, como “A fazer”, “Em andamento” e “Concluído”.
+Registros de acompanhamento e ajustes.
+Requisitos funcionais e não funcionais.
+Critérios de aceitação.
+Cenário, problema e funcionamento proposto.
+Organização ou contexto simulado.
+Usuários do catálogo.
+Fluxo de utilização do sistema.
+Regras de negócio.
+Escopo da primeira versão.
+Diferencial escolhido pelo grupo.
+Explicar desde o início como o sistema funcionará. As regras de negócio deverão ser definidas pelo grupo, respeitando os requisitos do manual.
+2.2. Direitos Humanos
+Discutir a aplicação de Direitos Humanos ao contexto do catálogo e do uso de agentes de IA.
+Relacionar o projeto a aspectos como:
+Respeito à dignidade das pessoas.
+Prevenção de instruções discriminatórias.
+Uso responsável das informações.
+Clareza das mensagens para o usuário.
+Inclusão e facilidade de utilização.
+Responsabilidade humana na elaboração e revisão das instruções.
+Apresentar decisões concretas do grupo. Por exemplo: criar orientações de cadastro que desencorajem instruções ofensivas e utilizar mensagens claras no console.
+Caso algum mecanismo de proteção seja apenas uma proposta futura, identificá-lo dessa forma.
+2.3. Redes de Computadores e Sistemas Distribuídos
+Descrever um cenário hipotético de utilização do catálogo em uma rede local — LAN.
+Incluir:
+Diagrama da rede.
+Computadores e equipamentos previstos.
+Forma de conexão.
+Organização cliente-servidor proposta.
+Plano de endereçamento IP.
+Identificação de IPs estáticos e uso de DHCP.
+Local previsto para armazenamento dos arquivos.
+Considerações sobre acesso, compartilhamento e cópias de segurança.
+Explicar o papel de cada equipamento e justificar as escolhas.
+O diagrama representa uma proposta de funcionamento em rede. Não afirmar que o programa possui acesso simultâneo ou comunicação entre computadores se isso não tiver sido implementado e testado.
+2.4. Engenharia de Software Ágil — testes e validação
+Apresentar o plano de testes e a validação do sistema, relacionando-os aos requisitos definidos no projeto.
+Incluir:
+Operação testada.
+Dados utilizados.
+Resultado esperado.
+Resultado obtido.
+Situação do teste.
+Correções realizadas, quando houver.
+Validação do atendimento aos requisitos.
+Registro da homologação realizada pelo grupo.
+Não é necessário apresentar diagramas UML, diagramas de classes ou outros diagramas UML nesta subseção.
+2.5. Modelagem de Banco de Dados e NoSQL
+Elaborar uma modelagem compatível com o catálogo.
+Apresentar:
+Diagrama Entidade-Relacionamento — DER.
+Entidades, atributos e relacionamentos, quando houver.
+Chaves primárias e estrangeiras, quando aplicáveis.
+Tipos de dados e restrições.
+Dicionário de dados.
+Script SQL para criação das estruturas.
+Comandos de inserção de dados de exemplo.
+Consultas úteis, com seus resultados.
+As consultas poderão demonstrar listagem de agentes, busca por ID, busca por nome e seleção por nota.
+Relacionar os atributos da modelagem aos dados utilizados no programa. Caso o grupo discuta uma alternativa NoSQL, explicar sua possível aplicação ao cenário, sem substituir o DER e o script SQL obrigatórios.
+Nesta etapa, o programa em C deverá persistir os dados em arquivos. A integração com o banco de dados não é exigida pelo manual.
+2.6. Programação Estruturada em C
+Descrever a implementação e justificar as principais decisões.
+O sistema deverá cadastrar até 50 agentes, com:
+Informação
+Regra obrigatória
+ID
+Identificador único
+Nome
+Até 80 caracteres
+Script/instruções
+Até 1.000 caracteres, incluindo espaços, em uma única entrada textual
+Nota
+Valor entre 0 e 5
+O menu deverá permitir:
+Cadastrar um novo agente.
+Listar os agentes.
+Buscar pelo ID.
+Buscar pelo nome.
+Encerrar o programa.
+Após localizar um agente, apresentar todos os seus dados e permitir:
+Editar.
+Excluir.
+Retornar ao menu anterior.
+Explicar no texto:
+Organização dos vetores paralelos, mantendo os dados de cada agente na mesma posição.
+Uso de condições e repetições.
+Divisão do programa em funções.
+Tratamento das entradas.
+Controle do limite de registros.
+Garantia de identificação única.
+Gravação e recuperação dos dados em arquivo.
+Manutenção da correspondência dos vetores após uma exclusão.
+Tratamento de situações como cadastro vazio, busca sem resultado e dados inválidos.
+O código deverá ser funcional e comentado. Os comentários deverão estar no próprio código-fonte disponibilizado pelos alunos em Google Drive, OneDrive ou GitHub. Evitar concentrar toda a lógica na função main().
+2.7. Inteligência Artificial, Pesquisa Tecnológica e Inovação
+Documentar como a IA foi utilizada no desenvolvimento do PIM.
+Apresentar:
+Ferramentas utilizadas.
+Finalidade de cada uso.
+Prompts ou scripts empregados.
+Exemplos de resultados.
+Revisões, correções e validações realizadas pelos integrantes.
+O grupo deverá compreender e verificar os conteúdos e códigos utilizados. As referências bibliográficas precisam corresponder a fontes reais, efetivamente consultadas.
+Descrever também o diferencial do projeto, como categorias, tags, ordenação ou outro recurso pertinente. A nota de 0 a 5 já é obrigatória e, isoladamente, não caracteriza uma funcionalidade adicional.
+O diferencial deverá ser compatível com o prazo e preservar os requisitos mínimos.
+2.8. Manual de uso do sistema — capturas do console
+Esta deverá ser a última subseção do desenvolvimento.
+Organizar as capturas de tela em uma sequência de utilização e explicar o que o usuário deverá fazer em cada etapa.
+Incluir:
+1. Requisitos e instruções para compilar e executar.
+2. Tela inicial e menu.
+3. Cadastro de agente.
+4. Listagem.
+5. Busca pelo ID.
+6. Busca pelo nome.
+7. Exibição dos dados encontrados.
+8. Edição.
+9. Exclusão.
+10. Retorno aos menus.
+11. Encerramento.
+12. Recuperação dos dados ao reabrir o programa.
+13. Mensagens de erro e validações.
+14. Uso do diferencial implementado.
+Cada captura deverá ser legível, numerada, identificada e acompanhada de uma explicação. Informar sua fonte conforme o padrão institucional.
+Não inserir apenas imagens: o texto deverá orientar a utilização e explicar o resultado de cada operação.
+7. Capítulo 3 — Conclusão
+A conclusão deverá retomar o problema e responder aos objetivos apresentados na introdução.
+Apresentar:
+O que foi desenvolvido.
+Quais objetivos foram atendidos.
+Resultados dos testes.
+Contribuição das disciplinas.
+Benefícios da solução.
+Limitações encontradas.
+Possíveis melhorias futuras.
+Evitar afirmar que uma funcionalidade foi concluída quando ela não estiver implementada. Diferenciar resultados alcançados de propostas futuras.
+8. Referências
+Seguir o padrão indicado pela Biblioteca da Universidade Paulista.
+Utilizar livros, artigos e sites pertinentes ao tema. Todas as fontes citadas no texto deverão constar nas referências.
+Conferir autoria, título e demais dados bibliográficos. Não utilizar referências inventadas ou copiar conteúdos sem a devida citação.
+9. Apêndice — código-fonte e materiais complementares
+Inserir o link do código-fonte em uma das seguintes opções:
+Google Drive.
+OneDrive.
+GitHub.
+O link deverá permitir o acesso do professor, sem depender de uma solicitação posterior de permissão.
+Disponibilizar de forma organizada:
+Código-fonte completo e comentado.
+Instruções de compilação e execução.
+Scripts SQL.
+Arquivos dos diagramas.
+Arquivos de exemplo necessários.
+Evidências complementares de testes, quando pertinentes.
+O código comentado deverá ser disponibilizado no próprio código-fonte hospedado no Google Drive, OneDrive ou GitHub. Não é necessário entregar o código impresso.
+Identificar os apêndices e mencioná-los no texto.
+10. Cronograma — 2 de outubro a 11 de novembro de 2026
+O desenvolvimento do software e a escrita deverão ocorrer em paralelo durante todo o período.
+Período
+Atividades
+Entrega interna
+02 a 04/10
+Ler o manual; formar o grupo; dividir responsabilidades; definir cenário, problema, escopo e diferencial; criar pasta compartilhada e backlog.
+Plano de trabalho e responsabilidades definidos.
+05 a 08/10
+Pesquisar fontes; redigir a introdução; definir objetivos, requisitos e regras de negócio; iniciar menu, vetores e funções em C.
+Introdução preliminar e estrutura inicial do programa.
+09 a 15/10
+Revisar a introdução; estruturar todas as subseções; iniciar DER e rede; implementar cadastro, listagem e buscas.
+Primeira versão da escrita e primeira versão executável do sistema.
+16 a 22/10
+Implementar edição, exclusão e persistência; desenvolver script SQL; detalhar rede; atualizar registros das sprints.
+Funções obrigatórias implementadas e principais modelos elaborados.
+23 a 29/10
+Executar testes; corrigir falhas; implementar o diferencial; concluir conteúdos de Direitos Humanos, IA e inovação.
+Sistema integrado e desenvolvimento escrito em versão completa para revisão.
+30/10 a 05/11
+Validar o sistema; produzir capturas e manual; redigir conclusão; revisar referências e apêndices.
+Trabalho completo e evidências de funcionamento.
+06 a 09/11
+Revisar conteúdo e formatação; conferir as 20 a 30 páginas do desenvolvimento; verificar coerência entre texto e código.
+Versão final revisada.
+10 a 11/11
+Conferir nomes e RAs; testar links; abrir o arquivo final; revisar anexos; preparar entrega e realizar postagem antecipada, se possível.
+Trabalho finalizado e pronto para envio até 11/11.
+Prazo oficial de postagem: 12/11/2026, até as 23h.
+11. Apresentações
+As apresentações ocorrerão no final de novembro de 2026. Data, horário e local serão divulgados posteriormente.
+O grupo deverá demonstrar:
+Problema e objetivo do projeto.
+Funcionamento das operações obrigatórias.
+Persistência dos dados após fechar e reabrir o programa.
+Diferencial implementado.
+Principais testes e resultados.
+Participação dos integrantes.
+12. Conferência antes da entrega
+Antes de postar, verificar:
+Cadastro de todos os integrantes, com nomes e RAs corretos.
+Introdução com aproximadamente duas páginas e objetivos no último parágrafo.
+Desenvolvimento com 20 a 30 páginas.
+Todas as disciplinas e exigências contempladas.
+Programa funcional em C, com vetores paralelos e persistência em arquivos.
+DER, script SQL e consultas de exemplo.
+Diagrama de rede.
+Evidências do uso de IA.
+Plano e resultados dos testes.
+Manual com capturas do console.
+Conclusão coerente com os resultados.
+Citações, referências e formatação revisadas.
+Link do código acessível.
+Código-fonte completo e comentado disponível no Google Drive, OneDrive ou GitHub.
+Arquivo final abrindo corretamente.
+Postagem concluída e comprovante de envio guardado.
+Confirmação de que não é necessária a entrega impressa.
+O trabalho deverá apresentar uma solução própria, documentada e testada. Todos os integrantes devem compreender o projeto e estar preparados para explicar suas decisões e demonstrar o sistema.

@@ -35,23 +35,29 @@ int ler_inteiro(const char *mensagem) {
         printf("Erro: digite um numero inteiro.\n");
     }
 }
+// Autor: Vitor Hugo (Tarefa 1.2)
+int converter_nota(char *texto, float *nota) {
+    float valor;
+    char resto;
+    int i;
+
+    for (i = 0; texto[i] != '\0'; i++) {
+        if (texto[i] == ',') texto[i] = '.';
+    }
+    if (sscanf(texto, "%f %c", &valor, &resto) != 1 || valor < 0.0f || valor > 5.0f) return 0;
+    *nota = valor;
+    return 1;
+}
 
 // Autor: Vitor Hugo (Tarefa 1.2)
 float ler_nota(const char *mensagem) {
     char buffer[64];
     float valor;
-    char resto;
-    int i;
 
     while (1) {
         printf("%s", mensagem);
         ler_linha(buffer, sizeof(buffer));
-        for (i = 0; buffer[i] != '\0'; i++) {
-            if (buffer[i] == ',') buffer[i] = '.';
-        }
-        if (sscanf(buffer, "%f %c", &valor, &resto) == 1 && valor >= 0.0f && valor <= 5.0f) {
-            return valor;
-        }
+        if (converter_nota(buffer, &valor)) return valor;
         printf("Erro: digite uma nota de 0 a 5.\n");
     }
 }
